@@ -1,7 +1,28 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import tsconfigPaths from 'vite-tsconfig-paths';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
-// https://vitejs.dev/config/
+/**
+ * Configuring Vite
+ *
+ * we can use the defineConfig helper which should
+ * provide intellisense
+ *
+ * @see https://vitejs.dev/config
+ */
 export default defineConfig({
-  plugins: [react()]
-})
+	envPrefix: 'APP_',
+	envDir: '../',
+	root: './src',
+	build: {
+		emptyOutDir: true,
+		outDir: '../build',
+	},
+	plugins: [
+		react(),
+		tsconfigPaths({
+			projects: [resolve(__dirname, 'tsconfig.json')],
+		}),
+	],
+});
