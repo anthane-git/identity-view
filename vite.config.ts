@@ -19,6 +19,9 @@ export default defineConfig({
 		emptyOutDir: true,
 		outDir: '../build',
 	},
+	server: {
+		port: 3001,
+	},
 	plugins: [
 		react(),
 		tsconfigPaths({

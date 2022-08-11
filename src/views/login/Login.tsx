@@ -4,12 +4,13 @@ import { api, localLoginRoute } from '@services';
 
 export const Login = () => {
 	const [formData, setFormData] = useState({ email: '', password: '' });
+	const [acccessTkn, setAccessTkn] = useState('');
 
 	const onSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
 		api.post(localLoginRoute, formData).then(res => {
 			if (res.status === 200) {
-				console.log(res);
+				setAccessTkn(res.data.access_token);
 			} else {
 				console.log('error');
 			}
@@ -31,6 +32,10 @@ export const Login = () => {
 
 				<button>Login</button>
 			</form>
+			<br />
+			<hr />
+			<p>Accces Token</p>
+			<code>{acccessTkn}</code>
 		</main>
 	);
 };
