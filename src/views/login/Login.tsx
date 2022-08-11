@@ -8,13 +8,17 @@ export const Login = () => {
 
 	const onSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
-		api.post(localLoginRoute, formData).then(res => {
-			if (res.status === 200) {
-				setAccessTkn(res.data.access_token);
-			} else {
-				console.log('error');
-			}
-		});
+		api
+			.post(localLoginRoute, formData, {
+				withCredentials: true,
+			})
+			.then(res => {
+				if (res.status === 200) {
+					setAccessTkn(res.data.access_token);
+				} else {
+					console.log('error');
+				}
+			});
 	};
 
 	return (

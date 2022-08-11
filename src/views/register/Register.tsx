@@ -10,14 +10,18 @@ export const Register = () => {
 
 	const onSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
-		api.post(localRegisterRoute, formData).then(res => {
-			if (res.status === 201) {
-				console.log(res);
-				return navigate('/callback', { replace: false });
-			} else {
-				console.log('error');
-			}
-		});
+		api
+			.post(localRegisterRoute, formData, {
+				withCredentials: true,
+			})
+			.then(res => {
+				if (res.status === 201) {
+					console.log(res);
+					return navigate('/callback', { replace: false });
+				} else {
+					console.log('error');
+				}
+			});
 	};
 
 	return (
