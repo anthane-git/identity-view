@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { LinkQuery } from '@components';
 
 export const Header = () => (
 	<header>
 		<nav>
-			<Link to={'/'}>Home</Link>
+			<LinkQuery to={'/'}>
+				<>Home</>
+			</LinkQuery>
 		</nav>
 	</header>
 );

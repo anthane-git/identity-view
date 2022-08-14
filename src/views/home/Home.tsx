@@ -1,9 +1,13 @@
-import { Link } from 'react-router-dom';
+import { LinkQuery } from '@components';
 
 export const Home = () => (
 	<main>
-		<Link to={'/register'}>Register</Link>
+		<LinkQuery to={'/register'}>
+			<>Register</>
+		</LinkQuery>
 		<br />
-		<Link to={'/login'}>Login</Link>
+		<LinkQuery to={'/login'}>
+			<>Login</>
+		</LinkQuery>
 	</main>
 );

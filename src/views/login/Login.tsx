@@ -1,10 +1,11 @@
 import { SyntheticEvent, useState } from 'react';
 
 import { api, localLoginRoute } from '@services';
+import { useSearchParams } from 'react-router-dom';
 
 export const Login = () => {
 	const [formData, setFormData] = useState({ email: '', password: '' });
-	const [acccessTkn, setAccessTkn] = useState('');
+	const [searchParams] = useSearchParams();
 
 	const onSubmit = (e: SyntheticEvent) => {
 		e.preventDefault();
@@ -14,7 +15,7 @@ export const Login = () => {
 			})
 			.then(res => {
 				if (res.status === 200) {
-					setAccessTkn(res.data.access_token);
+					window.location.href = searchParams.get('callback') || '';
 				} else {
 					console.log('error');
 				}
@@ -39,7 +40,6 @@ export const Login = () => {
 			<br />
 			<hr />
 			<p>Accces Token</p>
-			<code>{acccessTkn}</code>
 		</main>
 	);
 };
