@@ -7,5 +7,6 @@ export const Header = () => (
 				<>Home</>
 			</LinkQuery>
 		</nav>
+		<hr />
 	</header>
 );

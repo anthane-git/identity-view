@@ -3,11 +3,11 @@ import { LinkQuery } from '@components';
 export const Home = () => (
 	<main>
 		<LinkQuery to={'/register'}>
-			<>Register</>
+			<>Sign up</>
 		</LinkQuery>
 		<br />
 		<LinkQuery to={'/login'}>
-			<>Login</>
+			<>Log in</>
 		</LinkQuery>
 	</main>
 );
