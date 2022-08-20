@@ -19,7 +19,7 @@ export const Login = () => {
 		try {
 			await api.post(localLoginRoute, data);
 
-			window.location.href = searchParams.get('callback') || '';
+			window.location.href = searchParams.get('redirect_uri') || '';
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
 				setError('server', {

@@ -19,7 +19,7 @@ export const Register = () => {
 		try {
 			await api.post(localRegisterRoute, data);
 
-			window.location.href = searchParams.get('callback') || '';
+			window.location.href = searchParams.get('redirect_uri') || '';
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
 				setError('server', {
