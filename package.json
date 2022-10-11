@@ -16,6 +16,9 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "@anthane/core-elements": "^1.2.2",
+    "@anthane/core-fonts": "^1.0.1",
+    "@anthane/core-tokens": "^1.2.4",
     "@types/node": "^18.6.4",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
@@ -25,7 +28,9 @@
     "eslint": "^8.21.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.30.1",
+    "sass": "^1.55.0",
     "typescript": "^4.6.4",
+    "typescript-plugin-css-modules": "^3.4.0",
     "vite": "^3.0.0",
     "vite-tsconfig-paths": "^3.5.0"
   }

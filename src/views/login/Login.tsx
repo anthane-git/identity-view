@@ -40,14 +40,12 @@ export const Login = () => {
 					{...register('email', { required: true })}
 				/>
 				<div>{errors.email && <span>Email is required</span>}</div>
-
 				<input
 					type={'password'}
 					{...register('password', { required: true })}
 				/>
 				<div>{errors.password && <span>Password is required</span>}</div>
 				<div>{errors.server?.message}</div>
-
 				<input type={'submit'} value={'Log In'} />
 			</form>
 		</main>
