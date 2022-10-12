@@ -1,7 +1,26 @@
 .formGroup {
 	max-width: 500px;
+	width: 100%;
+
+	.header {
+		margin-bottom: 20px;
+
+		button {
+			margin: 20px 0 10px;
+		}
+
+		hr {
+			margin: 20px 0;
+		}
+	}
+
+	form {
+		.group {
+			margin-bottom: 20px;
+		}
+	}
 
 	button {
-		width: 100% !important;
+		width: 100%;
 	}
 }

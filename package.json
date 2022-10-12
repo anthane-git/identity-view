@@ -16,9 +16,10 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@anthane/core-elements": "^1.2.2",
+    "@anthane/core-elements": "^1.2.3",
     "@anthane/core-fonts": "^1.0.1",
     "@anthane/core-tokens": "^1.2.4",
+    "@anthane/style-utils": "^1.0.3",
     "@types/node": "^18.6.4",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",

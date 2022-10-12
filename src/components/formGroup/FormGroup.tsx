@@ -2,13 +2,14 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { Form, Typography } from '@anthane/core-elements';
+import { Button, Form, Typography } from '@anthane/core-elements';
 
 import { api, localLoginRoute, localRegisterRoute } from '@services';
-import { Props } from './FormGroup.props';
+import { LinkQuery } from '@components';
+import { Auth, Response } from '@types';
 
 import styles from './FormGroup.module.scss';
-import { Auth, Response } from 'types';
+import { Props } from './FormGroup.props';
 
 export const FormGroup = ({ action }: Props) => {
 	const [searchParams] = useSearchParams();
@@ -26,14 +27,14 @@ export const FormGroup = ({ action }: Props) => {
 		Email = 'email',
 	}
 
-	const onSubmit: SubmitHandler<Auth> = async (data: any) => {
+	const onSubmit: SubmitHandler<Auth> = async (data: Auth) => {
 		try {
 			await api.post(
-				action === 'signup' ? localRegisterRoute : localLoginRoute,
+				action === 'register' ? localRegisterRoute : localLoginRoute,
 				data
 			);
 
-			//window.location.href = searchParams.get('redirect_uri') || '';
+			window.location.href = searchParams.get('redirect_uri') || '';
 		} catch (err) {
 			if (axios.isAxiosError(err)) {
 				setError('server', {
@@ -45,42 +46,60 @@ export const FormGroup = ({ action }: Props) => {
 	};
 
 	return (
-		<form className={styles.formGroup} onSubmit={handleSubmit(onSubmit)}>
-			{action === 'signup' && (
+		<div className={styles.formGroup}>
+			<div className={styles.header}>
+				<Typography.Headline size={'XLarge'}>
+					{action === 'register' ? 'Create Account ' : 'Login'}
+				</Typography.Headline>
+				<Typography.Caption>
+					{action === 'register'
+						? 'Already have an account?'
+						: 'Dont have an account?'}
+				</Typography.Caption>
+				<LinkQuery to={action === 'register' ? '/login' : '/register'}>
+					<Button type={'outlined'} variant={'secondary'}>
+						{action === 'register' ? 'Login' : 'Register'}
+					</Button>
+				</LinkQuery>
+				<hr />
+			</div>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				{action === 'register' && (
+					<Form.Group
+						type={'text'}
+						id={Inputs.Username}
+						label={Inputs.Username}
+						className={styles.group}
+						{...register(Inputs.Username, { required: true })}
+						text={errors.username && 'Username is required'}
+						fluid
+					/>
+				)}
 				<Form.Group
-					type={'text'}
-					id={Inputs.Username}
-					label={Inputs.Username}
-					{...register(Inputs.Username, { required: true })}
-					text={errors.username && 'Username is required'}
+					id={Inputs.Email}
+					type={Inputs.Email}
+					label={Inputs.Email}
+					className={styles.group}
+					{...register(Inputs.Email, { required: true })}
+					text={errors.email && 'Email is required'}
 					fluid
 				/>
-			)}
-			<br />
-			<Form.Group
-				id={Inputs.Email}
-				type={Inputs.Email}
-				label={Inputs.Email}
-				{...register(Inputs.Email, { required: true })}
-				text={errors.email && 'Email is required'}
-				fluid
-			/>
-			<br />
-			<Form.Group
-				id={Inputs.Password}
-				type={Inputs.Password}
-				label={Inputs.Password}
-				{...register(Inputs.Password, { required: true })}
-				text={errors.password && 'Password is required'}
-				fluid
-			/>
-			<br />
-			<Form.Input
-				value={action === 'signup' ? 'Create Account ' : 'Login'}
-				type={'submit'}
-				fluid
-			/>
-			<Typography.Body>{errors.server?.message}</Typography.Body>
-		</form>
+				<Form.Group
+					id={Inputs.Password}
+					type={Inputs.Password}
+					label={Inputs.Password}
+					className={styles.group}
+					{...register(Inputs.Password, { required: true })}
+					text={errors.password && 'Password is required'}
+					fluid
+				/>
+				<Form.Input
+					value={action === 'register' ? 'Create Account ' : 'Login'}
+					type={'submit'}
+					fluid
+				/>
+				<Typography.Body>{errors.server?.message}</Typography.Body>
+			</form>
+		</div>
 	);
 };

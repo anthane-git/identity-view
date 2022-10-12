@@ -1,3 +1,31 @@
-.main {
-	content: '';
+@use '@anthane/style-utils/dist' as *;
+
+.display {
+	background-color: var(--core-color-surface-selected-hovered);
+	border-radius: 8px;
+	padding: 60px;
+	height: 100%;
+	width: 100%;
+	display: none;
+
+	@include screen-xl {
+		display: flex;
+	}
+
+	.content {
+		margin-top: auto;
+
+		img {
+			max-width: 150px;
+		}
+
+		h1 {
+			margin-bottom: 20px;
+			max-width: 550px;
+		}
+
+		p {
+			max-width: 450px;
+		}
+	}
 }

@@ -1,3 +1,3 @@
 export interface Props {
-	action: 'login' | 'signup';
+	action: 'login' | 'register';
 }
