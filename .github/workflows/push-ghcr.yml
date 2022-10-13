@@ -15,7 +15,7 @@ jobs:
         with:
           ref: ${{ github.sha }}
           wait-interval: 10
-          running-workflow-name: "Waiting For Tests 🛑"
+          running-workflow-name: run-tests
           check-name: run-tests
 
       - name: Success
