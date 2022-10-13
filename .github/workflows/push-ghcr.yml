@@ -14,7 +14,6 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.1.2
         with:
           ref: ${{ github.ref }}
-          running-workflow-name: "Run Tests"
           check-name: "Run tests"
 
       - name: Success
