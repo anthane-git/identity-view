@@ -15,5 +15,10 @@ jobs:
     steps:
       - run: echo 'The triggering workflow passed'
 
-      - name: Say hi
+  build:
+    name: "continue"
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
         run: echo 'hi'
