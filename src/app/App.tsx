@@ -5,7 +5,7 @@ import { Router } from '@router';
 export const App = () => {
 	return (
 		<BrowserRouter>
-			<h1>BARR</h1>
+			<h1>TEST</h1>
 			<Router />
 		</BrowserRouter>
 	);
